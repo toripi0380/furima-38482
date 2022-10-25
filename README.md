@@ -6,7 +6,7 @@
 |Column-----------|Type--------|Options---------|
 
 |nickname----------|string-----|null: false-----|
-|email-------------|unique: true|null: false-----|
+|email-------------|string     |unique: true-----|
 |encrypted_password|string-----|null: false-----|
 |last_name---------|string-----|null: false-----|
 |first_name--------|string-----|null: false-----|
@@ -38,7 +38,7 @@
 
 ### Association
 * belongs_to :user
-* has_one :purchasers
+* has_one :purchaser
 
 ## purchasersテーブル
 
@@ -48,9 +48,9 @@
 |item-------------|references--|null: false, foreign_key:true|
 
 ### Association
-* belongs_to :users
-* has_one :shipping_informations
-* belongs_to :items
+* belongs_to :user
+* has_one :shipping_information
+* belongs_to :item
 
 ## shipping_informationsテーブル
 
@@ -62,9 +62,9 @@
 |block------------|text--------|null: false     |
 |building---------|text--------|                |
 |phone_number-----|string-----|null: false-----|
-|purchaser_id     |references  |null: false, foreign_key:true|
+|purchaser     |references  |null: false, foreign_key:true|
 
 ### Association
-* belongs_to :purchasers
+* belongs_to :purchaser
 
 （ここに追記していく）
