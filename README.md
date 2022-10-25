@@ -3,16 +3,16 @@
 
 ## usersテーブル
 
-|Column-----------|Type--------|Options---------|
+|Column     |Type     |Options     |
 
-|nickname----------|string-----|null: false-----|
-|email-------------|string     |unique: true-----|
-|encrypted_password|string-----|null: false-----|
-|last_name---------|string-----|null: false-----|
-|first_name--------|string-----|null: false-----|
-|last_name_kana----|string-----|null: false-----|
-|first_name_kana---|string-----|null: false-----|
-|birthday----------|date-------|null: false-----|
+|nickname          |string     |null: false     |
+|email             |string     |unique: true    |
+|encrypted_password|string     |null: false     |
+|last_name         |string     |null: false     |
+|first_name        |string     |null: false     |
+|last_name_kana    |string     |null: false     |
+|first_name_kana   |string     |null: false     |
+|birthday          |date       |null: false     |
 
 
 ### Association
@@ -24,17 +24,17 @@
 
 ## itemsテーブル
 
-|Column-----------|Type--------|Options---------|
+|Column     -|Type     ---|Options     ----|
 
-|product----------|string------|null: false-----|
-|description------|text--------|null: false-----|
-|category_id---------|integer------|null: false-----|
-|product_condition_id|integer------|null: false-----|
-|shipping_charges_id-|integer------|null: false-----|
-|ships_from_id-------|integer------|null: false-----|
-|number_of_days_id---|integer--------|null: false-----|
+|product          |string       |null: false     |
+|description      |text         |null: false     |
+|category_id      |integer      |null: false     |
+|product_condition_id|integer     |null: false     |
+|shipping_charges_id |integer     |null: false     |
+|ships_from_id       |integer     |null: false     |
+|number_of_days_id   |integer       |null: false     |
 |price               |integer      |null: false    |
-|user-------------|references  |null: false, foreign_key:true|
+|user              |references  |null: false, foreign_key:true|
 
 ### Association
 * belongs_to :user
@@ -42,10 +42,10 @@
 
 ## purchasersテーブル
 
-|Column-----------|Type--------|Options---------|
+|Column     |Type     |Options     |
 
-|user-------------|references--|null: false, foreign_key:true|
-|item-------------|references--|null: false, foreign_key:true|
+|user        |references--|null: false, foreign_key:true|
+|item        |references--|null: false, foreign_key:true|
 
 ### Association
 * belongs_to :user
@@ -54,14 +54,14 @@
 
 ## shipping_informationsテーブル
 
-|Column-----------|Type--------|Options---------|
+|Column     |Type     |Options     |
 
-|postal_code------|integer-----|null: false-----|
-|prefecture_id----|integer------|null: false-----|
-|city-------------|text--------|null: false     |
-|block------------|text--------|null: false     |
-|building---------|text--------|                |
-|phone_number-----|string-----|null: false-----|
+|postal_code      |string     |null: false     |
+|prefecture_id    |integer     |null: false     |
+|city            |string        |null: false     |
+|block            |string        |null: false     |
+|building         |string       |                |
+|phone_number     |string     |null: false     |
 |purchaser     |references  |null: false, foreign_key:true|
 
 ### Association
