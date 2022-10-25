@@ -7,7 +7,7 @@
 
 |nickname----------|string-----|null: false-----|
 |email-------------|string-----|null: false-----|
-|password----------|string-----|null: false-----|
+|encrypted_password|string-----|null: false-----|
 |last_name---------|string-----|null: false-----|
 |first_name--------|string-----|null: false-----|
 |last_name_kana----|string-----|null: false-----|
@@ -37,7 +37,7 @@
 
 ### Association
 * belongs_to :user
-* has_one :purchasers
+* has_many :purchasers
 
 ## purchasersテーブル
 
@@ -48,22 +48,22 @@
 
 ### Association
 * belongs_to :users
-* has_one :shipping_informations
-* has_one :items
+* has_many :shipping_informations
+* belongs_to :items
 
 ## shipping_informationsテーブル
 
 |Column-----------|Type--------|Options---------|
 
 |postal_code------|integer-----|null: false-----|
-|prefecture_id----|string------|null: false-----|
-|city-------------|text--------|                |
-|block------------|text--------|                |
+|prefecture_id----|integer------|null: false-----|
+|city-------------|text--------|null: false     |
+|block------------|text--------|null: false     |
 |building---------|text--------|                |
 |phone_number-----|string-----|null: false-----|
 
 
 ### Association
-* has_one :purchasers
+* belongs_to :purchasers
 
 （ここに追記していく）
