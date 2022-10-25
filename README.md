@@ -6,7 +6,7 @@
 |Column-----------|Type--------|Options---------|
 
 |nickname----------|string-----|null: false-----|
-|email-------------|string-----|null: false-----|
+|email-------------|unique: true|null: false-----|
 |encrypted_password|string-----|null: false-----|
 |last_name---------|string-----|null: false-----|
 |first_name--------|string-----|null: false-----|
@@ -37,7 +37,7 @@
 
 ### Association
 * belongs_to :user
-* has_many :purchasers
+* has_one :purchasers
 
 ## purchasersテーブル
 
@@ -48,7 +48,7 @@
 
 ### Association
 * belongs_to :users
-* has_many :shipping_informations
+* has_one :shipping_informations
 * belongs_to :items
 
 ## shipping_informationsテーブル
@@ -61,7 +61,7 @@
 |block------------|text--------|null: false     |
 |building---------|text--------|                |
 |phone_number-----|string-----|null: false-----|
-
+|purchaser_id     |references  |null: false, foreign_key:true|
 
 ### Association
 * belongs_to :purchasers
