@@ -33,6 +33,7 @@
 |shipping_charges_id-|integer------|null: false-----|
 |ships_from_id-------|integer------|null: false-----|
 |number_of_days_id---|integer--------|null: false-----|
+|price               |integer      |null: false    |
 |user-------------|references  |null: false, foreign_key:true|
 
 ### Association
