@@ -27,12 +27,12 @@ RSpec.describe User, type: :model do
      another_user = FactoryBot.build(:user)
      another_user.email = @user.email
      another_user.valid?
-     expect(another_user.errors.full_messages).to include('Email has already been taken')
+     expect(another_user.errors.full_messages).to include("Email has already been taken")
     end
     it 'emailは@を含まないと登録できない' do
       @user.email = 'testmail'
       @user.valid?
-      expect(@user.errors.full_messages).to include('Email is invalid')
+      expect(@user.errors.full_messages).to include("Email is invalid")
     end
     it 'passwordが空では登録できない' do
       @user.password = ''
@@ -41,13 +41,15 @@ RSpec.describe User, type: :model do
     end
     it 'passwordは6文字以上でないと登録できない' do
       @user.password = '1aaaa'
+      @user.password_confirmation = '1aaaa'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      expect(@user.errors.full_messages).to include("Password is too short (minimum is 6 characters)")
     end
     it 'passwordは半角英数字混合でないと登録できない' do
       @user.password = '012345'
+      @user.password_confirmation = '012345'
       @user.valid?
-      expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
+      expect(@user.errors.full_messages).to include("Password には英字と数字の両方を含めて設定してください")
     end
     it 'passwordとpassword_confirmationが不一致では登録できない' do
       @user.password = '123456'
