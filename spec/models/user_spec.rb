@@ -11,6 +11,7 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
     end
+    context '新規登録できないとき' do
     it 'nicknameが空だと登録できない' do
       @user.nickname = ''
       @user.valid?
@@ -22,11 +23,11 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Email can't be blank")
     end
     it 'emailは一意性でないと登録できない' do
-    @user.save
-    another_user = FactoryBot.build(:user)
-    another_user.email = @user.email
-    another_user.valid?
-    expect(another_user.errors.full_messages).to include('Email has already been taken')
+     @user.save
+     another_user = FactoryBot.build(:user)
+     another_user.email = @user.email
+     another_user.valid?
+     expect(another_user.errors.full_messages).to include('Email has already been taken')
     end
     it 'emailは@を含まないと登録できない' do
       @user.email = 'testmail'
@@ -39,7 +40,7 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Password can't be blank")
     end
     it 'passwordは6文字以上でないと登録できない' do
-      @user.password = 'aaaaa'
+      @user.password = '1aaaa'
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
     end
@@ -98,6 +99,7 @@ RSpec.describe User, type: :model do
       @user.birthday = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Birthday can't be blank")
+      end
       end
   end
 end
