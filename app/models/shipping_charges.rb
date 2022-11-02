@@ -6,5 +6,5 @@ class ShippingCharges < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :shipping_charges
+  has_many :item
 end

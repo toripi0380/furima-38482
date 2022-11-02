@@ -7,5 +7,5 @@ class NumberOfDays < ActiveHash::Base
   ]
 
   include ActiveHash::Associations
-  has_many :number_of_days
+  has_many :item
 end
