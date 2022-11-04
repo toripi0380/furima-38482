@@ -11,14 +11,14 @@ class Item < ApplicationRecord
   validates :product, presence: true
   validates :description, presence: true
   validates :category_id, presence: true
-  validates :product_condition_id, presence: true
+  validates :condition_id, presence: true
   validates :shipping_charges_id, presence: true
   validates :prefecture_id, presence: true
   validates :number_of_days_id, presence: true
   validates :price, presence: true
   validates :image, presence: true
   validates :category_id, numericality: { other_than: 1 , message: "can't be blank"} 
-  validates :product_condition_id, numericality: { other_than: 1 , message: "can't be blank"} 
+  validates :condition_id, numericality: { other_than: 1 , message: "can't be blank"} 
   validates :shipping_charges_id, numericality: { other_than: 1 , message: "can't be blank"} 
   validates :prefecture_id, numericality: { other_than: 1 , message: "can't be blank"} 
   validates :number_of_days_id, numericality: { other_than: 1 , message: "can't be blank"}
