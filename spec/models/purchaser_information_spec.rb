@@ -14,6 +14,7 @@ RSpec.describe PurchaserInformation, type: :model do
         expect(@purchaser_information).to be_valid
       end
       it 'buildingは空でも保存できること' do
+        expect(@purchaser_information).to be_valid
       end
     end
 
@@ -48,8 +49,18 @@ RSpec.describe PurchaserInformation, type: :model do
         @purchaser_information.valid?
         expect(@purchaser_information.errors.full_messages).to include("Phone number can't be blank")
       end
-      it '電話番号は、10桁以上11桁以内の半角数値' do
+      it '電話番号は9桁以下では登録できない' do
         @purchaser_information.phone_number = '11111'
+        @purchaser_information.valid?
+        expect(@purchaser_information.errors.full_messages).to include("Phone number 10桁以上11桁以内の半角数値のみで入力してください")
+      end
+      it '電話番号は12桁以上では登録できない' do
+        @purchaser_information.phone_number = '111222233334'
+        @purchaser_information.valid?
+        expect(@purchaser_information.errors.full_messages).to include("Phone number 10桁以上11桁以内の半角数値のみで入力してください")
+      end
+      it '電話番号は半角数値以外を含むと登録できない' do
+        @purchaser_information.phone_number = '1112222333a'
         @purchaser_information.valid?
         expect(@purchaser_information.errors.full_messages).to include("Phone number 10桁以上11桁以内の半角数値のみで入力してください")
       end
@@ -57,6 +68,16 @@ RSpec.describe PurchaserInformation, type: :model do
         @purchaser_information.token = nil
         @purchaser_information.valid?
         expect(@purchaser_information.errors.full_messages).to include("Token can't be blank")
+      end
+      it "userが紐づいていないと登録できない" do
+        @purchaser_information.user_id = nil
+        @purchaser_information.valid?
+        expect(@purchaser_information.errors.full_messages).to include("User can't be blank")
+      end
+      it "itemが紐づいていないと登録できない" do
+        @purchaser_information.item_id = nil
+        @purchaser_information.valid?
+        expect(@purchaser_information.errors.full_messages).to include("Item can't be blank")
       end
     end
   end

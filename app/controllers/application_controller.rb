@@ -14,4 +14,10 @@ class ApplicationController < ActionController::Base
       username == 'admin' && password == '2222'
     end
   end
+
+  def prevent_url
+    if @item.user_id != current_user.id || @item.purchaser != nil
+      redirect_to root_path
+    end
+  end
 end

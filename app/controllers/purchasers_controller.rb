@@ -1,7 +1,7 @@
 class PurchasersController < ApplicationController
   before_action :authenticate_user!
   before_action :set_furima, only: [:index, :create]
-  before_action :others_item, only: [:index]
+  before_action :prevent_url, only: [:index]
   def index
     @purchaser_information = PurchaserInformation.new
   end
@@ -38,9 +38,4 @@ class PurchasersController < ApplicationController
     @item = Item.find(params[:item_id])
   end
 
-  def others_item
-    if @item.user_id == current_user.id || @item.purchaser != nil
-      redirect_to root_path
-    end
-  end
 end
