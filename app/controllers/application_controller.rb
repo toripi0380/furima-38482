@@ -15,9 +15,5 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def prevent_url
-    if @item.user_id != current_user.id || @item.purchaser != nil
-      redirect_to root_path
-    end
   end
 end
