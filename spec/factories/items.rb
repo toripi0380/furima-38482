@@ -4,7 +4,7 @@ FactoryBot.define do
     product              {'空気清浄機'}
     description          {'空気をきれいにするもの'}
     category_id          {2}
-    product_condition_id {2}
+    condition_id         {2}
     shipping_charges_id  {2}
     prefecture_id        {2}
     number_of_days_id    {2}

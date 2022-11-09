@@ -52,7 +52,7 @@
 * has_one :shipping_information
 * belongs_to :item
 
-## shipping_informationsテーブル
+## informationsテーブル
 
 |Column     |Type     |Options     |
 
