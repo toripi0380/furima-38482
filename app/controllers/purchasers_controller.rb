@@ -1,17 +1,13 @@
 class PurchasersController < ApplicationController
-  before_action :authenticate_user!, except: :index
-
+  before_action :authenticate_user!
+  before_action :set_furima, only: [:index, :create]
+  before_action :others_item, only: [:index]
   def index
-    @item = Item.find(params[:item_id])
     @purchaser_information = PurchaserInformation.new
   end
 
-
-  def new
-  end
   
   def create
-    @item = Item.find(params[:item_id])
     @purchaser_information = PurchaserInformation.new(purchaser_params)
     if @purchaser_information.valid?
        pay_item
@@ -36,5 +32,15 @@ class PurchasersController < ApplicationController
         card: purchaser_params[:token],    # カードトークン
         currency: 'jpy'                 # 通貨の種類（日本円）
     )
+  end
+
+  def set_furima
+    @item = Item.find(params[:item_id])
+  end
+
+  def others_item
+    if @item.user_id == current_user.id || @item.purchaser != nil
+      redirect_to root_path
+    end
   end
 end
