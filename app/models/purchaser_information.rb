@@ -4,7 +4,7 @@ class PurchaserInformation
 
   with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: '3桁ハイフン4桁」の半角文字列のみ入力してください' }
-    validates :prefecture_id,numericality: { other_than: 1 , message: "can't be blank"} 
+    validates :prefecture_id,numericality: { other_than: 1 , message: "を選択してください"} 
     validates :city
     validates :block
     validates :phone_number, format: { with: /\A\d{10,11}\z/, message: '10桁以上11桁以内の半角数値のみで入力してください' }
